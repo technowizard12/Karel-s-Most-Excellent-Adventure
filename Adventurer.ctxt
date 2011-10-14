@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ walkNorth()
+comment0.text=alkNorth()\n\ walkNorth()\ moves\ the\ robot\ one\ space\ to\ the\ North,\ ending\ facing\ North\n\ preconditions\:\ Robot\ is\ not\ near\ a\ wall\ directly\ to\ the\ North\n\ postconditions\:\ Robot\ is\ facing\ north\ one\ space\ north\ of\ its\ original\ location\n
+comment1.params=
+comment1.target=void\ walkEast()
+comment1.text=alkEast()\n\ walkEast()\ moves\ the\ robot\ one\ space\ to\ the\ East,\ ending\ facing\ East\n\ preconditions\:\ \ Robot\ is\ not\ near\ a\ wall\ directly\ to\ the\ East\n\ postconditions\:\ Robot\ is\ facing\ east\ one\ space\ east\ of\ its\ original\ location\n
+comment2.params=
+comment2.target=void\ faceNorth()
+comment2.text=aceNorth()\n\ faceNorth()\ turns\ the\ robot\ around\ until\ it\ is\ facing\ North\n\ preconditions\:\ none\n\ postconditions\:\ Robot\ is\ facing\ North\n
+comment3.params=
+comment3.target=void\ faceEast()
+comment3.text=aceEast()\n\ faceEast()\ turns\ the\ robot\ around\ until\ it\ is\ facing\ East\n\ preconditions\:\ none\n\ postconditions\:\ Robot\ is\ facing\ East\n
+numComments=4
