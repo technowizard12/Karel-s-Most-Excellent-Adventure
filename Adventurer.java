@@ -161,4 +161,46 @@ public class Adventurer extends Robot
     }
     
     public void followTreasureMapTrail()
+    {
+        while (!fiveBeepers())
+        {
+            if (oneBeeper())
+            {
+                faceNorth();
+                while (!nextToABeeper())
+                {
+                    move();
+                }
+            }
+            
+            if (twoBeepers())
+            {
+                faceWest();
+                while (!nextToABeeper())
+                {
+                    move();
+                }
+            }
+            
+            if (threeBeepers())
+            {
+                faceSouth();
+                while (!nextToABeeper())
+                {
+                    move();
+                }
+            }
+            
+            if (fourBeepers())
+            {
+                faceEast();
+                while (!nextToABeeper())
+                {
+                    move();
+                }
+            }
+        }
+    }
+                
+                
 }
