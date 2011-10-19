@@ -1,4 +1,4 @@
-//megan is my homeboy
+//megan is my homeboy. Like, totallyz
 import kareltherobot.*;
 import java.awt.Color;
 /**
