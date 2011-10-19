@@ -222,6 +222,10 @@ public class Adventurer extends Robot
         }
     }
     
+    /*oneBeeper()
+     * checks if there is exactly one beeper on a corner
+     */
+    
     public boolean oneBeeper()
     {
         for (int i=0; i<1; i++) {pickBeeper();}
@@ -236,7 +240,79 @@ public class Adventurer extends Robot
             return true;
         }
     }
-        
-                
-                
-}
+    
+    /*twoBeepers()
+     * checks if there are exactly two beepers on a corner
+     */
+    
+    public boolean twoBeepers()
+    {
+        for (int i=0; i<2; i++) {pickBeeper();}
+        if (nextToABeeper())
+        {
+            for (int i=0; i<2; i++) {putBeeper();}
+            return false;
+        }
+        else
+        {
+            for (int i=0; i<2; i++) {putBeeper();}
+            return true;
+        }            
+    }
+    
+    /*threeBeepers()
+     * checks if there are exactly three beepers on a corner
+     */
+    
+    public boolean threeBeepers()
+    {
+        for (int i=0; i<3; i++) {pickBeeper();}
+        if (nextToABeeper())
+        {
+            for (int i=0; i<3; i++) {putBeeper();}
+            return false;
+        }
+        else
+        {
+            for (int i=0; i<3; i++) {putBeeper();}
+            return true;
+        }            
+    }
+    
+    /*fourBeepers()
+     * checks if there are exactly four beepers on a corner
+     */
+    
+    public boolean fourBeepers()
+    {
+        for (int i=0; i<4; i++) {pickBeeper();}
+        if (nextToABeeper())
+        {
+            for (int i=0; i<4; i++) {putBeeper();}
+            return false;
+        }
+        else
+        {
+            for (int i=0; i<4; i++) {putBeeper();}
+            return true;
+        }            
+    }
+    
+    /*fiveBeepers()
+     * checks if there are exactly five beepers on a corner
+     */
+    
+    public boolean fiveBeepers()
+    {
+        for (int i=0; i<5; i++) {pickBeeper();}
+        if (nextToABeeper())
+        {
+            for (int i=0; i<5; i++) {putBeeper();}
+            return false;
+        }
+        else
+        {
+            for (int i=0; i<5; i++) {putBeeper();}
+            return true;
+        }            
+    }
