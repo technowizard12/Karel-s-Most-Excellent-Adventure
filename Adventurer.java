@@ -146,6 +146,12 @@ public class Adventurer extends Robot
         }
     }
     
+    /*walkToWall()
+     * walks until the robot is one half square away from a wall.
+     * pre: none
+     * post: robot is one half square away from the nearest wall in the direction it was originall facing.
+     * 
+     */
     public void walkToWall()
     {
         while (!frontIsClear())
@@ -154,11 +160,25 @@ public class Adventurer extends Robot
         }
     }
     
+    /*walkEastToWall()
+     * turns the robot East, then executes walkToWall()
+     * pre: none
+     * post: robot is one half square away from the nearest wall east of its original position,
+     * regardless of original direction
+     * 
+     */
     public void walkEastToWall()
     {
         faceEast();
         walkToWall();
     }
+    
+    /*followTreasureMapTrail()
+     * moves the robot according to the treasure map rules stipulated.
+     * pre: robot is standing on a corner with at least one beeper
+     * post: robot has navigated treasure map trail
+     * 
+     */
     
     public void followTreasureMapTrail()
     {
@@ -201,6 +221,22 @@ public class Adventurer extends Robot
             }
         }
     }
+    
+    public boolean oneBeeper()
+    {
+        for (int i=0; i<1; i++) {pickBeeper();}
+        if (nextToABeeper())
+        {
+            for (int i=0; i<1; i++) {putBeeper();}
+            return false;
+        }
+        else
+        {
+            for (int i=0; i<1; i++) {putBeeper();}
+            return true;
+        }
+    }
+        
                 
                 
 }
