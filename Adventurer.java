@@ -91,6 +91,34 @@ public class Adventurer extends Robot
         }
     }
     
+    /*faceSouth()
+     * faceSouth() turns the robot around until it is facing South
+     * preconditions: none
+     * postconditions: Robot is facing South
+     */
+    
+    public void faceSouth()
+    {
+        while (!facingSouth())
+        {
+            turnLeft();
+        }
+    }
+    
+    /*faceWest()
+     * faceWest() turns the robot around until it is facing West
+     * preconditions: none
+     * postconditions: Robot is facing West
+     */
+    
+    public void faceWest()
+    {
+        while (!facingW())
+        {
+            turnLeft();
+        }
+    }
+    
     /*followTrail()
      * follows the first trail in the Excellent Adventure.
      * preconditions: robot is one corner away from beeper trail, facing in the direction of the trail.
@@ -220,6 +248,10 @@ public class Adventurer extends Robot
                 }
             }
         }
+        
+        if (facingNorth() {faceSouth();}
+        if (facingWest() {faceNorth();}
+        if (facingSouth() || facingEast()) {faceEast();}
     }
     
     /*oneBeeper()
@@ -316,3 +348,5 @@ public class Adventurer extends Robot
             return true;
         }            
     }
+    
+    
