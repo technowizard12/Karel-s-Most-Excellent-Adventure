@@ -104,7 +104,23 @@ public class Adventurer extends Robot
         {
             pickBeeper();
             move();
+            if (!nextToABeeper())
+            {
+                turnAround();
+                move();
+                turnRight();
+                move();
+                if (!nextToABeeper())
+                {
+                    turnAround();
+                    move();
+                    move();
+                }
+            }
+                    
         }
+        pickBeeper();
+        pickBeeper();
     }
     
     /*nextToTwoBeppers()
@@ -129,4 +145,20 @@ public class Adventurer extends Robot
             return false;
         }
     }
+    
+    public void walkToWall()
+    {
+        while (!frontIsClear())
+        {
+            move();
+        }
+    }
+    
+    public void walkEastToWall()
+    {
+        faceEast();
+        walkToWall();
+    }
+    
+    public void followTreasureMapTrail()
 }
