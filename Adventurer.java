@@ -227,6 +227,7 @@ public class Adventurer extends Robot
         {
             if (oneBeeper())
             {
+                pickBeeper();
                 faceNorth();
                 while (!nextToABeeper())
                 {
@@ -236,6 +237,7 @@ public class Adventurer extends Robot
             
             if (twoBeepers())
             {
+                for (int i=0; i<2; i++) {pickBeeper();}
                 faceWest();
                 while (!nextToABeeper())
                 {
@@ -245,6 +247,7 @@ public class Adventurer extends Robot
             
             if (threeBeepers())
             {
+                for (int i=0; i<3; i++) {pickBeeper();}
                 faceSouth();
                 while (!nextToABeeper())
                 {
@@ -254,6 +257,7 @@ public class Adventurer extends Robot
             
             if (fourBeepers())
             {
+                for (int i=0; i<4; i++) {pickBeeper();}
                 faceEast();
                 while (!nextToABeeper())
                 {
@@ -287,6 +291,7 @@ public class Adventurer extends Robot
             for (int i=0; i<1; i++) {putBeeper();}
             return true;
         }
+    }
        else
        {
            return false;
@@ -442,7 +447,6 @@ public class Adventurer extends Robot
     else
     {
         putBeeper();
-        putBeeper();
         return false;
     }
    }
@@ -455,7 +459,26 @@ public class Adventurer extends Robot
     
   public void escapeMaze()
   {
-      while (!nextToABeeper()) {followWallRight();}
+      while (!nextToABeeper() || behindABeeper()) {followWallRight();}
+    }
+    
+  public boolean behindABeeper()
+  {
+      move();
+      if (nextToABeeper())
+      {
+          turnAround();
+          move();
+          turnAround();
+          return true;
+        }
+      else
+      {
+          turnAround();
+          move();
+          turnAround();
+          return false;
+        }
     }
     
   public void followWallRight()
