@@ -33,10 +33,11 @@ public class Adventurer extends Robot
         walkEastToWall();
         followTreasureMapTrail();
         walkForTen();
-        followWallRight();
+        escapeMaze();
         leftUntilClear();
         afterMazeDilemma();
-        pickAllMineBeepers();
+        getToDaChoppah();
+        //pickAllMineBeepers();
     }
     
     /*walkNorth()
@@ -113,7 +114,7 @@ public class Adventurer extends Robot
     
     public void faceWest()
     {
-        while (!facingW())
+        while (!facingWest())
         {
             turnLeft();
         }
@@ -128,7 +129,7 @@ public class Adventurer extends Robot
     public void followTrail()
     {
         move();
-        while (!nextToTwoBeepers())
+        while (!twoBeepers())
         {
             pickBeeper();
             move();
@@ -151,22 +152,34 @@ public class Adventurer extends Robot
         pickBeeper();
     }
     
-    /*nextToTwoBeppers()
+    /*twoBeppers()
      * determines whether the robot is standing on top of two beepers.
      * preconditions: robot is next to at least one beeper
-     * postconditions: the robot has returned true if there are two or more beepers, false if there is 
-     * only one
+     * postconditions: the robot has returned true if there are exactly two, false if there are
+     * fewer or more
      */
     
     
-    public boolean nextToTwoBeepers()
+    public boolean twoBeepers()
     {
         pickBeeper();
         if (nextToABeeper())
         {
-            putBeeper();
-            return true;
+            pickBeeper();
+            if (!nextToABeeper())
+            {
+              putBeeper();
+              putBeeper();
+              return true;
+            }
+            else
+            {
+                putBeeper();
+                putBeeper();
+                return false;
+            }
         }
+              
         else
         {
             putBeeper();
@@ -182,7 +195,7 @@ public class Adventurer extends Robot
      */
     public void walkToWall()
     {
-        while (!frontIsClear())
+        while (frontIsClear())
         {
             move();
         }
@@ -249,8 +262,8 @@ public class Adventurer extends Robot
             }
         }
         
-        if (facingNorth() {faceSouth();}
-        if (facingWest() {faceNorth();}
+        if (facingNorth()) {faceSouth();}
+        if (facingWest()) {faceNorth();}
         if (facingSouth() || facingEast()) {faceEast();}
     }
     
@@ -260,7 +273,10 @@ public class Adventurer extends Robot
     
     public boolean oneBeeper()
     {
-        for (int i=0; i<1; i++) {pickBeeper();}
+        if (nextToABeeper()) 
+        {
+            pickBeeper();
+        
         if (nextToABeeper())
         {
             for (int i=0; i<1; i++) {putBeeper();}
@@ -271,82 +287,262 @@ public class Adventurer extends Robot
             for (int i=0; i<1; i++) {putBeeper();}
             return true;
         }
-    }
-    
-    /*twoBeepers()
-     * checks if there are exactly two beepers on a corner
-     */
-    
-    public boolean twoBeepers()
-    {
-        for (int i=0; i<2; i++) {pickBeeper();}
-        if (nextToABeeper())
-        {
-            for (int i=0; i<2; i++) {putBeeper();}
-            return false;
+       else
+       {
+           return false;
         }
-        else
-        {
-            for (int i=0; i<2; i++) {putBeeper();}
-            return true;
-        }            
+        
     }
     
-    /*threeBeepers()
-     * checks if there are exactly three beepers on a corner
+    /*threeBeppers()
+     * determines whether the robot is standing on top of three beepers.
+     * preconditions: robot is next to at least one beeper
+     * postconditions: the robot has returned true if there are exactly three, false if there are
+     * fewer or more
      */
+    
     
     public boolean threeBeepers()
     {
-        for (int i=0; i<3; i++) {pickBeeper();}
+        pickBeeper();
         if (nextToABeeper())
         {
-            for (int i=0; i<3; i++) {putBeeper();}
-            return false;
+            pickBeeper();
+            if (nextToABeeper())
+            {
+              pickBeeper();
+              if (!nextToABeeper())
+              {
+                  for (int i=0; i<3; i++) {putBeeper();}
+                  return true;
+              }
+              else
+              {
+                  for (int i=0; i<3; i++) {putBeeper();}
+                  return false;
+                }
+            }
+            else
+            {
+                for (int i=0; i<2; i++) {putBeeper();}
+                return false;
+            }
         }
+              
         else
         {
-            for (int i=0; i<3; i++) {putBeeper();}
-            return true;
-        }            
+            putBeeper();
+            return false;
+        }
     }
     
-    /*fourBeepers()
-     * checks if there are exactly four beepers on a corner
+    /*fourBeppers()
+     * determines whether the robot is standing on top of four beepers.
+     * preconditions: robot is next to at least one beeper
+     * postconditions: the robot has returned true if there are exactly four, false if there are
+     * fewer or more
      */
     
     public boolean fourBeepers()
     {
-        for (int i=0; i<4; i++) {pickBeeper();}
+        pickBeeper();
         if (nextToABeeper())
         {
-            for (int i=0; i<4; i++) {putBeeper();}
-            return false;
+            pickBeeper();
+            if (nextToABeeper())
+            {
+              pickBeeper();
+              if (nextToABeeper())
+              {
+                  pickBeeper();
+                  if (!nextToABeeper())
+                  {
+                      for (int i=0; i<4; i++) {putBeeper();}
+                      return true;
+                  }
+                  else
+                  {
+                      for (int i=0; i<4; i++) {putBeeper();}
+                      return false;
+                  }
+            }
+            else
+            {
+                for (int i=0; i<3; i++) {putBeeper();}
+                return false;
+            }
         }
+              
         else
         {
-            for (int i=0; i<4; i++) {putBeeper();}
-            return true;
-        }            
+            for (int i=0; i<2; i++) {putBeeper();}
+            return false;
+        }
     }
-    
-    /*fiveBeepers()
-     * checks if there are exactly five beepers on a corner
+    else
+    {
+        putBeeper();
+        return false;
+    }
+  }
+  
+  /*fiveBeppers()
+     * determines whether the robot is standing on top of five beepers.
+     * preconditions: robot is next to at least one beeper
+     * postconditions: the robot has returned true if there are exactly five, false if there are
+     * fewer or more
      */
     
     public boolean fiveBeepers()
     {
-        for (int i=0; i<5; i++) {pickBeeper();}
+        pickBeeper();
         if (nextToABeeper())
         {
-            for (int i=0; i<5; i++) {putBeeper();}
-            return false;
+            pickBeeper();
+            if (nextToABeeper())
+            {
+              pickBeeper();
+              if (nextToABeeper())
+              {
+                  pickBeeper();
+                  if (nextToABeeper())
+                  {
+                      pickBeeper();
+                      if (!nextToABeeper())
+                      {
+                          for (int i=0; i<5; i++) {putBeeper();}
+                          return true;
+                        }
+                        else
+                        {
+                            for (int i=0; i<5; i++) {putBeeper();}
+                            return false;
+                    }
+                }
+                else
+                {
+                    for (int i=0; i<4; i++) {putBeeper();}
+                    return false;
+                }
+            }
+            else
+            {
+                for (int i=0; i<3; i++) {putBeeper();}
+                return false;
+            }
         }
+              
         else
         {
-            for (int i=0; i<5; i++) {putBeeper();}
-            return true;
-        }            
+            putBeeper();
+            putBeeper();
+            return false;
+        }
     }
+    else
+    {
+        putBeeper();
+        putBeeper();
+        return false;
+    }
+   }
+   
+  public void walkForTen()
+  {
+      for (int i=0; i<10; i++) {move();}
+   
+    }
+    
+  public void escapeMaze()
+  {
+      while (!nextToABeeper()) {followWallRight();}
+    }
+    
+  public void followWallRight()
+  {
+      if (frontIsClear())
+            {
+                move();
+                turnRight();
+                if (frontIsClear())
+                {
+                    move();
+                    turnRight();
+                    if (frontIsClear())
+                    {
+                        move();
+                    }
+                    else
+                    {
+                        turnLeft();
+                    }
+                }
+                else if (!frontIsClear())
+                {
+                    turnLeft();
+                }
+            }
+            else
+            {
+                turnLeft();
+            }
+        }
+    
+  public void leftUntilClear()
+  {
+      while (!frontIsClear()) {turnLeft();}
+    }
+  
+  public void afterMazeDilemma()
+  {
+      if (leftIsClear()) {walkToWall();}
+      else {walkForTen();}
+      turnRight();
+      walkToWall();
+    }
+  
+  public boolean leftIsClear()
+  {
+      turnLeft();
+      if (frontIsClear())
+      {
+          turnRight();
+          return true;
+        }
+      else
+      {
+          turnRight();
+          return false;
+        }
+    }
+    
+  public void turnAround()
+  {
+      turnLeft();
+      turnLeft();
+    }
+  
+  public void turnRight()
+  {
+      for (int i=0; i<3; i++) {turnLeft();}
+    }
+    
+  
+  public void getToDaChoppah()
+  {
+      faceEast();
+      if (!nextToABeeper()) 
+      {
+          move();
+          move();
+          faceNorth();
+        }
+      move();
+      getToDaChoppah();
+      move();
+      
+
+    }
+}
     
     

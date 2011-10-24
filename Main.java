@@ -34,13 +34,13 @@ class Main implements Directions
     {
 
         // read the world file - modify to read the correct file in worldFilesDos
-        // World.readWorld(<filename>);
+        World.readWorld("TESTWLD.kwld");
         // make the world visible, set the delay and show the speed control
         World.setVisible(true);
         // change the delay - smaller to make the robot go faster
         World.setDelay(20);
         // set the size to 10 streets and 10 avenues
-        World.setSize(10,10);
+        World.setSize(10,40);
         World.showSpeedControl(true);
         // open the world builder
         WorldBuilder myBuilder = new WorldBuilder(true);
