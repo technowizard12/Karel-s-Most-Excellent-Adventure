@@ -5,8 +5,9 @@ import java.awt.Color;
  * Adventurer navigates sight-unseen to the lost beeper mine and picks up all the beepers.
  * This class codes to complete the Most Excellent Adventure.
  * 
- * @author <your name here>
- *    With assistance from:  <list of people who helped>
+ * @author Simon Cowell
+ * Ghostwritten via the occult by Megan Prakash
+ * 
  * @version 
  */
 public class Adventurer extends Robot
