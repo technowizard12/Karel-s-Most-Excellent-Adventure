@@ -6,7 +6,7 @@ import java.awt.Color;
  * This class codes to complete the Most Excellent Adventure.
  * 
  * @author Simon Cowell
- * Ghostwritten from beyond the grave by Megan Prakash
+ * Ghostwritten via the occult by Megan Prakash
  * 
  * @version 
  */
