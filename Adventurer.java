@@ -460,7 +460,7 @@ public class Adventurer extends Robot
     
   public void escapeMaze()
   {
-      while (!nextToABeeper() || behindABeeper()) {followWallRight();}
+      while (!nextToABeeper()) {followWallRight();}
     }
     
   public boolean behindABeeper()
@@ -484,15 +484,15 @@ public class Adventurer extends Robot
     
   public void followWallRight()
   {
-      if (frontIsClear())
+      if (frontIsClear() && !nextToABeeper())
             {
                 move();
                 turnRight();
-                if (frontIsClear())
+                if (frontIsClear() && !nextToABeeper())
                 {
                     move();
                     turnRight();
-                    if (frontIsClear())
+                    if (frontIsClear() && !nextToABeeper())
                     {
                         move();
                     }
@@ -501,7 +501,7 @@ public class Adventurer extends Robot
                         turnLeft();
                     }
                 }
-                else if (!frontIsClear())
+                else if (!frontIsClear() && !nextToABeeper())
                 {
                     turnLeft();
                 }
